@@ -14,14 +14,14 @@ class GlobalIndicesController extends GetxController {
     globalIndicesController.detailData().then((globalIndicesModels) {
       restData.clear();
       restData.add(globalIndicesModels[0]);
-      print(restData[0].data!.datalist![0].heading.toString());
+      // print(restData[0].data!.datalist![0].heading.toString());
     });
     const oneSec = const Duration(seconds:15);
     time = Timer.periodic(oneSec, (Timer t) {
       globalIndicesController.detailData().then((globalIndicesModels) {
         restData.clear();
         restData.add(globalIndicesModels[0]);
-        print(restData[0].data!.datalist![0].heading.toString());
+        // print(restData[0].data!.datalist![0].heading.toString());
       });
     });
 

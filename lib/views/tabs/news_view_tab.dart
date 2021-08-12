@@ -62,6 +62,7 @@ class _NewsTabState extends State<NewsTab> {
                                               url: controller.latestNewsModel[0].data!.datalist![index].shareUrl,
                                               heroTag: index.toString(),
                                               sourceName: controller.latestNewsModel[0].data!.datalist![index].source,
+                                              isComingFrmSpecific: false,
                                             ),
                                       ));
                                 },

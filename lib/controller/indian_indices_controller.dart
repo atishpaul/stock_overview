@@ -15,14 +15,14 @@ class HomeController extends GetxController {
     indianIndicesController.detailData().then((indianIndicesModels) {
       restData.clear();
       restData.add(indianIndicesModels[0]);
-      print(restData[0].refreshDetails!.rate.toString());
+      // print(restData[0].refreshDetails!.rate.toString());
     });
     const oneSec = const Duration(seconds:15);
     time = Timer.periodic(oneSec, (Timer t) {
       indianIndicesController.detailData().then((indianIndicesModels) {
         restData.clear();
         restData.add(indianIndicesModels[0]);
-        print(restData[0].refreshDetails!.rate.toString());
+        // print(restData[0].refreshDetails!.rate.toString());
       });
     });
 

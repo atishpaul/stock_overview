@@ -28,18 +28,25 @@ class _HomeViewState extends State<HomeView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: NeumorphicAppBar(
-        title: Text(
-          'My Portfolio',
-          style: GoogleFonts.manrope(
-            fontWeight: FontWeight.w600,
-          ),
-        ),
-      ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 12.0),
         child: ListView(
           children: [
+            Row(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 20),
+                  child: Text(
+                    'All Indices',
+                    style: GoogleFonts.manrope(
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black54,
+                        fontSize: 18
+                    ),
+                  ),
+                ),
+              ],
+            ),
             Hero(
               tag: 'search',
               child: Material(
@@ -55,7 +62,7 @@ class _HomeViewState extends State<HomeView> {
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(10),
                     child: Container(
-                      color: Color(0xFFF9F9F9),
+                      color: Color(0xFFEFEFEF),
                       padding: EdgeInsets.all(8),
                       child: TextField(
                         cursorColor: Colors.black,
@@ -82,7 +89,7 @@ class _HomeViewState extends State<HomeView> {
               if(controller.restData.isNotEmpty) {
                 return Container(
                   padding: EdgeInsets.all(8),
-                  color: Color(0xFFF9F9F9),
+                  color: Color(0xFFEFEFEF),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -101,7 +108,7 @@ class _HomeViewState extends State<HomeView> {
                       ),
                       ConstrainedBox(
                         constraints: BoxConstraints(
-                          maxHeight: 200,
+                          maxHeight: 245,
                         ),
                         child: ListView.builder(
                           shrinkWrap: false,
@@ -147,7 +154,7 @@ class _HomeViewState extends State<HomeView> {
                                                   fontWeight: FontWeight.w600,
                                                   fontSize: 12,
                                                   color: double
-                                                      .parse(controller.restData[0].list!.indices![index].change.toString())
+                                                      .parse(controller.restData[0].list!.indices![index].change.toString().replaceAll(',', ''))
                                                       .isNegative
                                                       ? Colors.red
                                                       : Colors.green),
@@ -197,7 +204,7 @@ class _HomeViewState extends State<HomeView> {
               if(controller.restData.isNotEmpty) {
                 return Container(
                   padding: EdgeInsets.all(8),
-                  color: Color(0xFFF9F9F9),
+                  color: Color(0xFFEFEFEF),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,

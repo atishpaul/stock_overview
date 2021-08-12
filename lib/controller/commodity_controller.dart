@@ -1,24 +1,24 @@
 import 'dart:async';
 import 'package:get/get.dart';
-import 'package:stock_portfolio/models/stocks_model.dart';
-import 'package:stock_portfolio/providers/stocks_api.dart';
+import 'package:stock_portfolio/models/commidity_model.dart';
+import 'package:stock_portfolio/providers/commodity_api.dart';
 
-class StocksController extends GetxController {
-  final stocksApiController = Get.put(StocksApi());
+class CommodityController extends GetxController {
+  final commodityApiController = Get.put(CommodityApi());
   late Timer time;
 
-  var restData = <StocksModel>[].obs;
+  var restData = <CommodityModel>[].obs;
 
   @override
   void onInit() {
-    stocksApiController.detailData().then((globalIndicesModels) {
+    commodityApiController.commodityData().then((commodityData) {
       restData.clear();
-      restData.add(globalIndicesModels[0]);
+      restData.add(commodityData[0]);
       // print(restData[0].data!.datalist![0].heading.toString());
     });
     const oneSec = const Duration(seconds:15);
     time = Timer.periodic(oneSec, (Timer t) {
-      stocksApiController.detailData().then((globalIndicesModels) {
+      commodityApiController.commodityData().then((globalIndicesModels) {
         restData.clear();
         restData.add(globalIndicesModels[0]);
         // print(restData[0].data!.datalist![0].heading.toString());

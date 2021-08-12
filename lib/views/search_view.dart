@@ -27,32 +27,32 @@ class _SearchViewState extends State<SearchView> {
               Hero(
                 tag: 'search',
                 child: Material(
-                  child: Neumorphic(
-                    padding: EdgeInsets.all(8),
-                    style: NeumorphicStyle(
-                      shape: NeumorphicShape.concave,
-                      depth: 2,
-                      lightSource: LightSource.topLeft,
-                    ),
-                    child: TextField(
-                      controller: searchTextController,
-                      onChanged: (value) {
-                        searchControllerr.searchController.searchFor(searchTextController.text).then((value) {
-                          searchControllerr.restDataa.clear();
-                          searchControllerr.restDataa.add(value[0]);
-                        });
-                      },
-                      cursorColor: Colors.black,
-                      keyboardType: TextInputType.text,
-                      autofocus: true,
-                      decoration: new InputDecoration(
-                          border: InputBorder.none,
-                          focusedBorder: InputBorder.none,
-                          enabledBorder: InputBorder.none,
-                          errorBorder: InputBorder.none,
-                          disabledBorder: InputBorder.none,
-                          contentPadding: EdgeInsets.only(left: 15, bottom: 11, top: 11, right: 15),
-                          hintText: "Search for stocks"),
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(10),
+                    child: Container(
+                      color: Color(0xFFEFEFEF),
+                      padding: EdgeInsets.all(8),
+                      child: TextField(
+                        controller: searchTextController,
+                        onChanged: (value) {
+                          searchControllerr.searchController.searchFor(searchTextController.text).then((value) {
+                            searchControllerr.restDataa.clear();
+                            searchControllerr.restDataa.add(value[0]);
+                          });
+                        },
+                        cursorColor: Colors.black,
+                        keyboardType: TextInputType.text,
+                        autofocus: true,
+                        decoration: new InputDecoration(
+                            border: InputBorder.none,
+                            enabled: true,
+                            focusedBorder: InputBorder.none,
+                            enabledBorder: InputBorder.none,
+                            errorBorder: InputBorder.none,
+                            disabledBorder: InputBorder.none,
+                            contentPadding: EdgeInsets.only(left: 15, bottom: 11, top: 11, right: 15),
+                            hintText: "Search for stocks"),
+                      ),
                     ),
                   ),
                 ),
@@ -73,17 +73,22 @@ class _SearchViewState extends State<SearchView> {
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Neumorphic(
-                                    padding: EdgeInsets.all(8),
-                                    style: NeumorphicStyle(
-                                      shape: NeumorphicShape.concave,
-                                      depth: 2,
-                                      lightSource: LightSource.topLeft,
-                                    ),
-                                    child: Text(
-                                      controller.restDataa[0].result![index].name.toString(),
-                                      style: GoogleFonts.manrope(fontSize: 17),
-                                    ),),
+                                  ClipRRect(
+                                    borderRadius: BorderRadius.circular(10),
+                                    child: Container(
+                                      color: Color(0xFFEFEFEF),
+                                      padding: EdgeInsets.all(8),
+                                      child: Text(
+                                        controller.restDataa[0].result![index].name.toString(),
+                                        style: GoogleFonts.manrope(fontSize: 17),
+                                      ),),
+                                  ),
+                                  controller.restDataa[0].result!.length-1 == index ? Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      ClipRRect(borderRadius: BorderRadius.circular(25),child: Container(width: 50,child: Divider(height: 25,thickness: 4,color: Colors.black54,))),
+                                    ],
+                                  ):Row(),
                                 ],
                               ),
                             );

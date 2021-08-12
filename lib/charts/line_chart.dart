@@ -1,68 +1,118 @@
 import 'package:flutter/material.dart';
+import 'package:stock_portfolio/controller/graph_controller.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
-import 'package:syncfusion_flutter_charts/sparkcharts.dart';
 
 class LineGraph extends StatefulWidget {
-  // ignore: prefer_const_constructors_in_immutables
-  LineGraph({Key? key}) : super(key: key);
+  final List<SalesData>? graphData;
+  final GraphController? graphControllerr;
 
+  const LineGraph({Key? key, this.graphData, this.graphControllerr}) : super(key: key);
   @override
   _LineGraphState createState() => _LineGraphState();
 }
 
 class _LineGraphState extends State<LineGraph> {
-  List<_SalesData> data = [
-    _SalesData('Jan', 35),
-    _SalesData('Feb', 28),
-    _SalesData('Mar', 34),
-    _SalesData('Apr', 32),
-    _SalesData('May', 40)
-  ];
   @override
   Widget build(BuildContext context) {
     return Column(children: [
-      //Initialize the chart widget
       SfCartesianChart(
-          primaryXAxis: CategoryAxis(),
+          primaryXAxis: CategoryAxis(
+            isVisible: true,
+            axisLine: AxisLine(
+              color: Colors.greenAccent,
+            ),
+          ),
+          plotAreaBorderColor: Colors.transparent,
+          borderColor: Colors.transparent,
+          trackballBehavior: TrackballBehavior(enable: true,shouldAlwaysShow: true,),
           // Enable legend
           legend: Legend(isVisible: false),
           // Enable tooltip
-          tooltipBehavior: TooltipBehavior(enable: true),
-          series: <ChartSeries<_SalesData, String>>[
-            LineSeries<_SalesData, String>(
-                dataSource: data,
-                xValueMapper: (_SalesData sales, _) => sales.year,
-                yValueMapper: (_SalesData sales, _) => sales.sales,
-                name: 'Sales',
+          series: <ChartSeries<SalesData, String>>[
+            LineSeries<SalesData, String>(
+                dataSource: widget.graphData!,
+                xValueMapper: (SalesData sales, _) => sales.year,
+                yValueMapper: (SalesData sales, _) => sales.sales,
+                name: 'Status',enableTooltip: true,color: Color(0xFF282846),
                 // Enable data label
-                dataLabelSettings: DataLabelSettings(isVisible: true))
+                dataLabelSettings: DataLabelSettings(isVisible: false))
           ]),
-      // Expanded(
-      //   child: Padding(
-      //     padding: const EdgeInsets.all(8.0),
-      //     //Initialize the spark charts widget
-      //     child: SfSparkLineChart.custom(
-      //       //Enable the trackball
-      //       trackball: SparkChartTrackball(
-      //           activationMode: SparkChartActivationMode.tap),
-      //       //Enable marker
-      //       marker: SparkChartMarker(
-      //           displayMode: SparkChartMarkerDisplayMode.all),
-      //       //Enable data label
-      //       labelDisplayMode: SparkChartLabelDisplayMode.all,
-      //       xValueMapper: (int index) => data[index].year,
-      //       yValueMapper: (int index) => data[index].sales,
-      //       dataCount: 5,
-      //     ),
-      //   ),
-      // )
+      Column(
+        children: [
+          Container(
+            height: 40,
+            child: ListView(
+              shrinkWrap: true,
+              scrollDirection: Axis.horizontal,
+              children: [
+                TextButton(
+                    onPressed: () {
+                      widget.graphControllerr!.time.cancel();
+                      widget.graphControllerr!.duration.value = '1d';
+                      widget.graphControllerr!.durationData();
+                    },
+                    child: Text('1D')),
+                TextButton(
+                    onPressed: () {
+                      widget.graphControllerr!.time.cancel();
+                      widget.graphControllerr!.duration.value = '5d';
+                      widget.graphControllerr!.durationData();
+                    },
+                    child: Text('1W')),
+                TextButton(
+                    onPressed: () {
+                      widget.graphControllerr!.time.cancel();
+                      widget.graphControllerr!.duration.value = '1m';
+                      widget.graphControllerr!.durationData();
+                    },
+                    child: Text('1M')),
+                TextButton(
+                    onPressed: () {
+                      widget.graphControllerr!.time.cancel();
+                      widget.graphControllerr!.duration.value = '3m';
+                      widget.graphControllerr!.durationData();
+                    },
+                    child: Text('3M')),
+                TextButton(
+                    onPressed: () {
+                      widget.graphControllerr!.time.cancel();
+                      widget.graphControllerr!.duration.value = '6m';
+                      widget.graphControllerr!.durationData();
+                    },
+                    child: Text('6M')),
+                TextButton(
+                    onPressed: () {
+                      widget.graphControllerr!.time.cancel();
+                      widget.graphControllerr!.duration.value = '1yr';
+                      widget.graphControllerr!.durationData();
+                    },
+                    child: Text('1Y')),
+                TextButton(
+                    onPressed: () {
+                      widget.graphControllerr!.time.cancel();
+                      widget.graphControllerr!.duration.value = '2yr';
+                      widget.graphControllerr!.durationData();
+                    },
+                    child: Text('2Y')),
+                TextButton(
+                    onPressed: () {
+                      widget.graphControllerr!.time.cancel();
+                      widget.graphControllerr!.duration.value = '3yr';
+                      widget.graphControllerr!.durationData();
+                    },
+                    child: Text('3Y')),
+                TextButton(
+                    onPressed: () {
+                      widget.graphControllerr!.time.cancel();
+                      widget.graphControllerr!.duration.value = '5yr';
+                      widget.graphControllerr!.durationData();
+                    },
+                    child: Text('5Y')),
+              ],
+            ),
+          )
+        ],
+      ),
     ]);
   }
-}
-
-class _SalesData {
-  _SalesData(this.year, this.sales);
-
-  final String year;
-  final double sales;
 }

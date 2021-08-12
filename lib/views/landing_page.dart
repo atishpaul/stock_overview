@@ -42,7 +42,8 @@ class _LandingPageState extends State<LandingPage> {
           NewsTab(),
         ],
       ),
-      bottomNavigationBar: Neumorphic(
+      bottomNavigationBar: Container(
+       color: Color(0xFF4F0E0E),
         padding: EdgeInsets.symmetric(vertical: 15),
         child: Obx(() => Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -58,7 +59,7 @@ class _LandingPageState extends State<LandingPage> {
                     ClipRRect(
                       borderRadius: BorderRadius.circular(25),
                       child: Container(
-                        color: pageGetController.pageValue.value == 0 ? Colors.tealAccent : Colors.white,
+                        color: pageGetController.pageValue.value == 0 ? Colors.tealAccent : Color(0xFF4F0E0E),
                         width: 15,
                         height: 4,
                       ),
@@ -66,7 +67,7 @@ class _LandingPageState extends State<LandingPage> {
                     SizedBox(
                       height: 3,
                     ),
-                    Text('Indices',style: GoogleFonts.aBeeZee(fontSize: 15),),
+                    Text('Indices',style: GoogleFonts.aBeeZee(fontSize: 15,color: Colors.white70),),
                   ],
                 ),
               ),
@@ -82,7 +83,7 @@ class _LandingPageState extends State<LandingPage> {
                     ClipRRect(
                       borderRadius: BorderRadius.circular(25),
                       child: Container(
-                        color: pageGetController.pageValue.value == 1 ? Colors.tealAccent : Colors.white,
+                        color: pageGetController.pageValue.value == 1 ? Colors.tealAccent : Color(0xFF4F0E0E),
                         width: 15,
                         height: 4,
                       ),
@@ -90,7 +91,7 @@ class _LandingPageState extends State<LandingPage> {
                     SizedBox(
                       height: 3,
                     ),
-                    Text('Stocks',style: GoogleFonts.aBeeZee(fontSize: 15),),
+                    Text('Stocks',style: GoogleFonts.aBeeZee(fontSize: 15,color: Colors.white70),),
                   ],
                 ),
               ),
@@ -106,7 +107,7 @@ class _LandingPageState extends State<LandingPage> {
                     ClipRRect(
                       borderRadius: BorderRadius.circular(25),
                       child: Container(
-                        color: pageGetController.pageValue.value == 2 ? Colors.tealAccent : Colors.white,
+                        color: pageGetController.pageValue.value == 2 ? Colors.tealAccent : Color(0xFF4F0E0E),
                         width: 15,
                         height: 4,
                       ),
@@ -114,7 +115,7 @@ class _LandingPageState extends State<LandingPage> {
                     SizedBox(
                       height: 3,
                     ),
-                    Text('Commodity',style: GoogleFonts.aBeeZee(fontSize: 15),),
+                    Text('Commodity',style: GoogleFonts.aBeeZee(fontSize: 15,color: Colors.white70),),
                   ],
                 ),
               ),
@@ -130,7 +131,7 @@ class _LandingPageState extends State<LandingPage> {
                     ClipRRect(
                       borderRadius: BorderRadius.circular(25),
                       child: Container(
-                        color: pageGetController.pageValue.value == 3 ? Colors.tealAccent : Colors.white,
+                        color: pageGetController.pageValue.value == 3 ? Colors.tealAccent : Color(0xFF4F0E0E),
                         width: 15,
                         height: 4,
                       ),
@@ -138,7 +139,7 @@ class _LandingPageState extends State<LandingPage> {
                     SizedBox(
                       height: 3,
                     ),
-                    Text('News',style: GoogleFonts.aBeeZee(fontSize: 15),),
+                    Text('News',style: GoogleFonts.aBeeZee(fontSize: 15,color: Colors.white70),),
                   ],
                 ),
               ),
