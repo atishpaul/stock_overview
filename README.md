@@ -1,4 +1,4 @@
-# stock_portfolio
+# stock_overview
 
 A new Flutter project.
 
